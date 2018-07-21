@@ -1,0 +1,95 @@
+/*Custom colors*/
+:root{
+	--light-blue:#99ccff;
+}
+
+
+.top_menu_bar td{
+	text-align:center;
+	font-family: 'Roboto Condensed', sans-serif;
+	color:white;
+	
+}
+
+.top_menu_bar table{
+	width: 70%;
+	margin:auto;
+	text-align:center;
+	overflow:hidden;
+	font-size: 0.67em;
+	font-weight: bold;
+	padding:10px;
+}
+
+.top_menu_bar{
+	background-color: var(--light-blue);
+}
+
+
+.header{
+	height:300px;
+	background-image:url(tools.jpg);
+	vertical-align:center;
+}
+
+.header h1{
+	font-size: 9em;
+    height: 90%; 
+    display:flex;
+    align-items: center;
+	margin:0px;
+	margin-left:100px;
+	color:white;
+	text-shadow: 5px 2px 3px black;
+
+}
+
+.content{
+	max-width: 1000px;
+	width:95%;
+	margin:auto;
+	margin-top:60px;
+	margin-bottom:60px;
+}
+
+.side_photo{
+	min-width:500px;
+	max-width:40%;
+	float:right;
+	padding:10px;
+}
+
+.bottom_menu{
+	background-color:var(--light-blue);
+}
+
+.bottom_menu ul{
+	padding-bottom:20px;
+	padding-top:20px;
+	margin:0px;
+	margin-left:200px;
+}
+
+.bottom_menu li{
+	display:block;
+	padding: 10px;
+	font-family: 'Roboto Condensed', sans-serif;
+	
+}
+
+.footer{
+	color:white;
+	background-color:black;
+	text-align:center;
+	padding: 30px;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+p{
+	font-family: 'Noto Serif', serif;
+}
+
