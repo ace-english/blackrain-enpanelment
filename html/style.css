@@ -21,7 +21,8 @@ body{
 h1, h2, h3, h4, h5{
 	font-family:var(--font-headings);
 }
-form{
+
+#login{
 	margin-top:30px;
 	margin-bottom:30px;
 	margin-left:auto;
@@ -29,7 +30,7 @@ form{
 	width:50%;
 }
 
-input[type=text], [type=password] {
+#login input[type=text], [type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 0px 0px 80px 0;
@@ -37,6 +38,15 @@ input[type=text], [type=password] {
 	border:none;
 	border-bottom: 1px solid #ccc;
     box-sizing: border-box;
+}
+
+#entry{
+	margin:auto;
+	display:inline;
+}
+
+#entry label,input{
+	margin:10px;
 }
 
 input[type=submit] {
