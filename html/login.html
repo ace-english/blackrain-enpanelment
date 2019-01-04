@@ -3,7 +3,7 @@
 <title>Log In</title>
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+<script src="login.js"></script>
 </head>
 
 <body>
@@ -30,11 +30,13 @@
 
 	<div class="floating-box"> <form id="login">
 		<label>User ID</label>
-		<input type="text" label="userID"></input>
+		<input type="text" label="userID" id="userID">
 		<label>Password</label>
-		<input type="password" label="password"></input>
-		<input type="submit"></input>
-	</form> </div>
+		<input type="password" label="password" id="password">
+		<input type="button" value="Submit" id="submit" onclick="validate();">
+	</form> 
+    <span><b class="note">Note : </b>For this demo use following username and password. <br/><b class="valid">User Name : Formget<br/>Password : formget#123</b></span>
+    </div>
 
 
 	<h6>Made by Blackrain Technologies</h6>
