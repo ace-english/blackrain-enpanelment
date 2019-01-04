@@ -19,37 +19,39 @@
 </table>
 <div class="floating-box" style="text-align:center; margin-left:25%;">
 	<h2>Add New Patient</h2>
-	<form id="entry">
+	<form id="entry" method="post" action="connect.php">
 		<table><tbody><tr><td>
+		<label>Patient ID</label></td><td>
+		<input type="text" name="PatientID" label="PatientID">
 		<label>First Name</label></td><td>
-		<input type="text" label="fname"></input>
+		<input type="text" name="Fname" label="Fname"></input>
 		</td><td>
 		<label>Middle Name</label></td><td>
-		<input type="text" label="mname"></input>
+		<input type="text" name="Mname" label="Mname"></input>
 		</td></tr><tr><td>
 		<label>Last Name</label></td><td>
-		<input type="text" label="lname"></input>
+		<input type="text" name="Lname" label="Lname"></input>
 		</td><td>
 		<label>Date of Birth</label></td><td>
-		<input type="date" label="dob"></input>
+		<input type="date" name="DOB" label="DOB"></input>
 		</td></tr><tr><td>
 		<label>Sex</label></td><td>
-		<input type="text" label="sex"></input>
+		<input type="text" name="Sex" label="Sex"></input>
 		</td><td>
 		<label>Gender</label></td><td>
-		<input type="text" label="gender"></input>
+		<input type="text" name="Gender" label="Gender"></input>
 		</td></tr><tr><td>
 		<label>Race</label></td><td>
-		<input type="text" label="race"></input>
+		<input type="text" name="Race" label="Race"></input>
 		</td><td>
 		<label>Ethnicity</label></td><td>
-		<input type="text" label="ethnicity"></input>
+		<input type="text" name="Ethnicity" label="Ethnicity"></input>
 		</td></tr><tr><td>
 		<label>Languages</label></td><td>
-		<input type="text" label="language"></input>
+		<input type="text" name="Language" label="Language"></input>
 		</td></tr><tr><td colspan=4>
 		
-		<input type="submit"></input></td><td></td>
+		<input type="submit" value="submit"></input></td><td></td>
 		</tr></tbody></table>
 		
 	
