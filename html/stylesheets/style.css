@@ -1,8 +1,6 @@
 :root{
 	--font-body:'Nunito', Sans Serif;
 	--font-headings:'Nunito', Sans Serif;
-	--red:#660000;
-	--blue:#6699cc;
 	--dark_blue:#58b;
 	--light_gray:#bbb;
 	--side_menu_width:200px;
@@ -10,7 +8,6 @@
 
 a{
 	font-family:var(font-headings);
-	color:var(--blue);
 }
 
 body{
@@ -51,17 +48,12 @@ h1, h2, h3, h4, h5{
 
 input[type=submit] {
     width: 100%;
-    background-color: var(--blue);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: var(--dark_blue);
 }
 
 .side_menu{
@@ -167,16 +159,8 @@ input[type=submit]:hover {
 	padding:10px;
 }
 
-.tabs-menu a:hover{
-	color:var(--blue);
-}
-
 .tabs-active a:hover{
 	color:white;
-}
-
-.tabs-active{
-	background-color:var(--blue);
 }
 
 #q-graph-wrapper{
@@ -274,12 +258,10 @@ font-weight: normal; color: #333;}
 }
 #q-graph .sent {
   left: 13px; 
-  background-color: var(--dark_blue);
   border-color: transparent;
 }
 #q-graph .paid {
   left: 77px; 
-  background-color: var(--blue);
   border-color: transparent;
 }
 
