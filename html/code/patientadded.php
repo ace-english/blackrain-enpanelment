@@ -2,10 +2,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {//Check it is comming from a form
 
     //mysql credentials
-    $mysql_host = "localhost";
-    $mysql_username = "root";
-    $mysql_password = "ENTER PASSWORD HERE";
-    $mysql_database = "health";
+    require_once('DBInfo.php');
     
 
     $uid = filter_var($_POST["PatientID"]);
