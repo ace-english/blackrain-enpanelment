@@ -7,11 +7,11 @@ a{
 	color:var(--main);
 }
 
-input[type=submit] {
+input[type=submit], .button {
     background-color: var(--main);
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, .button:hover {
     background-color: var(--accent);
 }
 
