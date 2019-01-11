@@ -2,11 +2,7 @@
 if(isset($_POST['adduser'])){
 
  	//mysql credentials
-    $mysql_host = "localhost";
-    $mysql_username = "root";
-     // Replace text with Database Server Password
-    $mysql_password = "ENTER PASSWORD HERE";
-    $mysql_database = "health";
+    require_once('DBInfo.php');
 
     //Open a new connection to the MySQL server
     $mysqli = new mysqli($mysql_host, $mysql_username, $mysql_password, $mysql_database);
