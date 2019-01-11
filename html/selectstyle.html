@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Select Style</title>
+<link rel="stylesheet" href="stylesheets/style.css">
+<link rel="stylesheet" href="stylesheets/kaiser.css">
+<link rel="stylesheet" href="stylesheets/dignity.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+</head>
+
+<body><table class="patient-info-header">
+<tr>
+	<td><img src="img/menu.png" align="middle" href="index.html">
+	CT# - <span id="ct-num"> 1234567890</span>
+	</td><td style="width:60%;">
+	</td><td>
+	<img src="img/bell.png" align="middle" >
+	USER ID
+	<span id="user-id">_________</span>
+	</tr>
+</table>
+
+
+<div class="floating-box" style="text-align:center;">
+
+	Select your color scheme:
+	<select id="chandeCss">
+        <option value="default">Default</option>
+        <option value="dignity">Dignity Health</option>
+        <option value="kaiser">Kaiser Permanente</option>
+	</select>
+
+<a href="" class="button" onclick="selectCss()" >OK</a>
+	
+	
+	<script type="text/javacript">
+	function selectCss() {
+            alert("yp");
+        }
+}
+</script>
+
+</div>
+
+
+
+
+
+
+</body>
+</html>

@@ -163,6 +163,15 @@ input[type=submit] {
 	color:white;
 }
 
+.button{
+	display: inline-block;
+	margin:auto;
+	padding: 14px 20px 14px 20px;
+	border-radius: 2px;
+	color: white;
+	text-decoration: none;
+}
+
 #q-graph-wrapper{
 	padding: 100px;
 	margin:auto;
