@@ -7,7 +7,7 @@ $responce = @mysqli_query($dbc, $query);
 
 if($responce){
 	echo'<table align = "left"
-	cellspaceing="5" sellpadding="8">
+	cellspaceing="5" cellpadding="8" border="1">
 	<tr><td align="left"><b>PatientID</b></td>
 	<td align="left"><b>First Name</b></td>
 	<td align="left"><b>Middle Name</b></td>

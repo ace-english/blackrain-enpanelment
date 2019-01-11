@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {//Check it is comming from a form
     require_once('DBInfo.php');
     
 
-    $uid = filter_var($_POST["PatientID"]);
+    $pid = rand(200000,999999);
     $f_name = filter_var($_POST["Fname"]);
     $m_name = filter_var($_POST["Mname"]);
     $l_name = filter_var($_POST["Lname"]);
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {//Check it is comming from a form
     //bind parameters for markers, where (s = string, i = integer, d = double,  b = blob)
 
     
-    $statement->bind_param('isssssssss', $uid, $f_name, $m_name, $l_name, $date, $u_genders, $u_sex, $lang, $u_race, $ethnic); //bind values and execute insert query
+    $statement->bind_param('isssssssss', $pid, $f_name, $m_name, $l_name, $date, $u_genders, $u_sex, $lang, $u_race, $ethnic); //bind values and execute insert query
     
     if($statement->execute()){
        require_once('getpatientinfo.php');

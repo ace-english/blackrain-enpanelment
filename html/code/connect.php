@@ -2,7 +2,7 @@
 
 DEFINE ('DB_USER', 'root');
  // Replace text with Database Server Password
-DEFINE ('DB_PASSWORD', 'ReplaceMe!');
+DEFINE ('DB_PASSWORD', 'root1');
 DEFINE ('DB_HOST', 'localhost');
 DEFINE ('DB_NAME', 'health');
 
