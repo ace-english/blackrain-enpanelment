@@ -11,10 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {//Check it is comming from a form
     $l_name = filter_var($_POST["Lname"]);
     $date = filter_var($_POST["DOB"]);
     $u_genders= filter_var($_POST["Gender"]);
-    $lang = filter_var($_POST["Sex"]);
-    $u_race = filter_var($_POST["Language"]);
-    $ethnic = filter_var($_POST["Race"]);
-    $u_sex = filter_var($_POST["Ethnicity"]);
+    $lang = filter_var($_POST["Language"]);
+    $u_race = filter_var($_POST["Race"]);
+    $ethnic = filter_var($_POST["Ethnicity"]);
+    $u_sex = filter_var($_POST["Sex"]);
 
     //Open a new connection to the MySQL server
     $mysqli = new mysqli($mysql_host, $mysql_username, $mysql_password, $mysql_database);
