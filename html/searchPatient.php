@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
 	<title>Patient</title>
@@ -34,48 +33,52 @@
 
 		</div>
 
-
 		<div class="floating-box">
-			<h1 style="padding-left: 50px"><u>Result</u></h1>
-			<table>
-				<td>
-					<div class="floating-box" style="border: 1px solid black;">
-						<h4>John Doe</h4>
-						<li>Age: 12</li>
-						<li>Sex: Male</li>
-						<li>Health Status: Alive</li>
-						<li>Last Visit: 365 days ago</li>
-						<li>Care Team: Team Deep</li>
-						<li>More...</li>
-					</div>
-				</td>
+			<?php 
+			if(isset($_POST['searchAll'])){
+				require_once('connect.php');
 
-				<td>
-					<div class="floating-box" style="border: 1px solid black;">
-						<h4>John Long</h4>
-						<li>Age: 34</li>
-						<li>Sex: Male</li>
-						<li>Health Status: Alive</li>
-						<li>Last Visit: 35 days ago</li>
-						<li>Care Team: Team Alpha</li>
-						<li>More...</li>
-					</div>
-				</td>
+				$query = "SELECT Fname, Lname, DOB, Sex FROM patient";
+				$responce = @mysqli_query($dbc, $query);
+				$boxLimit = 4;
+				$count = 0;
 
-				<td>
-					<div class="floating-box" style="border: 1px solid black;">
-						<h4>Jane Dong</h4>
-						<li>Age: 15</li>
-						<li>Sex: Female</li>
-						<li>Health Status: Dead</li>
-						<li>Last Visit: 103 days ago</li>
-						<li>Care Team: Team Death</li>
-						<li>More...</li>
-					</div>
-				</td>
-			</table>
+				if($responce){
+				
+					echo'<table>';
+					while($row = mysqli_fetch_array($responce)){
+						$count++;
+						if ($count > $boxLimit) {
+							echo'<tr>';
+						}
+						echo'
+							<td> 
+								<div class="floating-box" style="border: 1px solid black;">
+									 <b><h3>'. $row['Fname'] . '</h3></b><h5>'. $row['Lname'] . '</h5>
+									<li> DOB: '. $row['DOB'] . '</li>
+									<li> Sex: '. $row['Sex'] . '</li>
+									<li>Health Status: Alive</li>
+									<li>Last Visit: 365 days ago</li>
+									<li>Care Team: Team Deep</li>
+								</div>
+							</td>';
+
+						if ($count > $boxLimit){
+							echo'<?/tr>';
+							$count = 1;
+						}
+
+					}
+					echo'</table>';
+				} else{
+					echo "Couldn't issue database query<br />";
+					echo mysqli_error($dbc);
+				}
+
+				mysqli_close($dbc);
+			}
+			?>
 		</div>
-
 
 	</body>
 	</html>
