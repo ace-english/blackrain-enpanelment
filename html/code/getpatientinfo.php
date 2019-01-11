@@ -24,8 +24,9 @@
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			<a href="../login.html">Log In</a>
 			<a href="../index.html">Home</a>
+			<a href="../addpatient.html">Add Patient</a>
 			<a href="searchPatient.php">Search Patients</a>
-			<a href="#">Contact</a>
+
 		</div>
 
 		<div id="floating-box">
