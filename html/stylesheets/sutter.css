@@ -1,0 +1,31 @@
+:root{
+	--main:#039291;
+	--accent:#898989;
+}
+
+a{
+	color:var(--main);
+}
+
+input[type=submit], .button {
+    background-color: var(--main);
+}
+
+input[type=submit]:hover, .button:hover {
+    background-color: var(--accent);
+}
+
+.tabs-menu a:hover{
+	color:var(--main);
+}
+
+.tabs-active{
+	background-color:var(--main);
+}
+
+#q-graph .sent {
+  background-color: var(--accent);
+}
+#q-graph .paid {
+  background-color: var(--main);
+}

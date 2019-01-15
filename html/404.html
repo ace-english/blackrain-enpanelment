@@ -4,20 +4,19 @@
 <link rel="stylesheet" href="stylesheets/style.css">
 <link rel="stylesheet" href="stylesheets/kaiser.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="code/menu.js"></script>
 
 </head>
 
-<body><table class="patient-info-header">
-<tr>
-	<td><img src="img/menu.png" align="middle" href="index.html">
-	CT# - <span id="ct-num"> 1234567890</span>
-	</td><td style="width:60%;">
-	</td><td>
-	<img src="img/bell.png" align="middle" >
-	USER ID
-	<span id="user-id">_________</span>
-	</tr>
-</table>
+
+<body>
+
+<table id="patient-info-header"></table>
+<div id="side_menu_container"></div>
+
+
+
 <table class="tabs-menu">
 <tr><td class="tabs-active"><a href="404.html">Hospital Needs</a></td>
 <td><a href="docpatient.html">Doc/Patient</a></td>
@@ -32,7 +31,13 @@
 
 
 
-
+<script>
+$(document).ready(function(){
+	$('#hamburger').click(function(){
+		$('#side_menu_container').toggle();
+	});
+});
+</script>
 
 
 </body>
