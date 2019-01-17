@@ -11,8 +11,8 @@ window.onload = function () {
 		{name:"Home",link:"index.html"},
 		{name:"Log In",link:"login.html"},
 		{name:"Add Patient",link:"addpatient.html"},
-		{name:"Search Patient", link:"code/searchPatient.php"},
-		{name:"View Database", link:"code/getpatientinfo.php"},
+		{name:"Search Patient", link:"searchPatient.php"},
+		{name:"View Database", link:"getpatientinfo.php"},
 		{name:"Analytics",link:"docpatient.html"},
 		{name:"Settings", link:"settings.html"}
 	];

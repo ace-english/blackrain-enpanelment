@@ -1,24 +1,13 @@
 <html>
 <head>
 	<title>Patient</title>
-	<link rel="stylesheet" href="../stylesheets/style.css">
-	<link rel="stylesheet" href="../stylesheets/kaiser.css">
+	<link rel="stylesheet" href="stylesheets/style.css">
+	<link rel="stylesheet" href="stylesheets/kaiser.css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+	<script src="code/menu.js"></script>
 </head>
 <body>
 
-	<table class="patient-info-header">
-		<tr>
-			<td><img src="../img/menu.png" align="middle" href="index.html" onclick="openNav()"&#9776; >
-				CT# - <span id="ct-num"> 1234567890</span>
-			</td><td>
-				<h1 id="patient-name">Search Patient</h1>
-			</td><td>
-				<img src="../img/bell.png" align="middle" >
-				USER ID
-				<span id="user-id">_________</span>
-			</tr>
-		</table>
 
 		<div class="floating-box" id="centerTop">
 			<h3>Please enter one of the following:</h3>
@@ -34,17 +23,10 @@
 
 		</div>
 
-		<div id="mySidenav" class="sidenav">
-			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<a href="../login.html">Log In</a>
-			<a href="../index.html">Home</a>
-			<a href="getpatientinfo.php">View Database</a>
-			<a href="../addpatient.html">Add Patients</a>
-		</div>
 
 		<?php 
 		if(isset($_POST['searchAll'])){
-			require_once('connect.php');
+			require_once('code/connect.php');
 
 			$query = "SELECT Fname, Lname, DOB, Sex FROM patient";
 			$responce = @mysqli_query($dbc, $query);
@@ -88,7 +70,7 @@
 			mysqli_close($dbc);
 
 		} else if (isset($_POST['searchUser'])) {
-			require_once('connect.php');
+			require_once('code/connect.php');
 			$f_name = filter_var($_POST["patientFName"]);
 			$l_name = filter_var($_POST["patientLName"]);
 			$pid = filter_var($_POST["patientID"]);
@@ -144,17 +126,5 @@
 		}
 
 		?>
-
-		<script>
-			/* Set the width of the side navigation to 250px */
-			function openNav() {
-				document.getElementById("mySidenav").style.width = "250px";
-			}
-
-			/* Set the width of the side navigation to 0 */
-			function closeNav() {
-				document.getElementById("mySidenav").style.width = "0";
-			}
-		</script>
 	</body>
 	</html>

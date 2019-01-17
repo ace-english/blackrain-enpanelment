@@ -4,32 +4,14 @@
 <link rel="stylesheet" href="../stylesheets/style.css">
 <link rel="stylesheet" href="../stylesheets/kaiser.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+<script src="code/menu.js"></script>
 </head>
 
-<body><table class="patient-info-header">
-<tr>
-	<td><img src="img/menu.png" align="middle" href="index.html" onclick="openNav()">
-	CT# - <span id="ct-num"> 1234567890</span>
-	</td><td style="width:60%;">
-	</td><td>
-	<img src="img/bell.png" align="middle" >
-	USER ID
-	<span id="user-id">_________</span>
-	</tr>
-</table>
-
-<div id="mySidenav" class="sidenav">
-	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	<a href="../login.html">Log In</a>
-	<a href="../index.html">Home</a>
-	<a href="code/getpatientinfo.php">View Database</a>
-	<a href="code/searchPatient/php">Search Patients</a>
-</div>
-
+<body>
+	
 <div class="floating-box" style="text-align:center; margin-left:25%;">
 	<h2>Add New Provider</h2>
-	<form id="entry" method="post" action="provideradded.php">
+	<form id="entry" method="post" action="code/provideradded.php">
 		<table><tbody><tr><td>
 		<label>First Name</label>
 		</td><td>
@@ -52,21 +34,5 @@
 		</tr></tbody></table>
 	</form>
 </div>
-
-
-		<script>
-			/* Set the width of the side navigation to 250px */
-			function openNav() {
-				document.getElementById("mySidenav").style.width = "250px";
-			}
-
-			/* Set the width of the side navigation to 0 */
-			function closeNav() {
-				document.getElementById("mySidenav").style.width = "0";
-			}
-		</script>
-
-
-
 </body>
 </html>
