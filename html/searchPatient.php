@@ -11,7 +11,7 @@
 
 		<div class="floating-box" id="centerTop">
 			<h3>Please enter one of the following:</h3>
-			<form method="post" action="http://localhost/code/searchPatient.php">
+			<form method="post" action="http://localhost/searchPatient.php">
 				<label>Patient ID:</label>
 				<input type="text" label="patientID" name="patientID" placeholder="000000">
 				<label>Patient Name:</label>
