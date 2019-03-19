@@ -56,6 +56,34 @@ input[type=submit] {
     cursor: pointer;
 }
 
+.home-table{
+	width:90%;
+	margin:auto;
+	padding: 20px;
+	border-spacing: 30px;
+}
+
+.home-table td{
+	padding: 10px;
+}
+
+#home-content{
+	vertical-align: top;
+	overflow-y:scroll;
+	max-height: 460px;
+}
+
+#empanelment, #PCP{
+	width:200px;
+	height: 200px;
+	background-color: #f5f5f5;
+	text-align: center;
+}
+
+#empanelment:hover, #PCP:hover{
+	background-color: var(--main);
+}
+
 .side_menu{
 	height:100%;
 	width:var(--side_menu_width);
@@ -127,10 +155,6 @@ input[type=submit] {
 
 .patient-info tr{
 	vertical-align:top;
-}
-
-#side_menu_container{
-	
 }
 	
 
