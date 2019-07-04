@@ -17,18 +17,17 @@
 			$responce = @mysqli_query($dbc, $query);
 
 			if($responce){
-				echo'<table align = "left"
-				cellspaceing="5" cellpadding="8" border="1">
-				<tr><td align="left"><b>PatientID</b></td>
-				<td align="left"><b>First Name</b></td>
-				<td align="left"><b>Middle Name</b></td>
-				<td align="left"><b>Last Name</b></td>
-				<td align="left"><b>DOB</b></td>
-				<td align="left"><b>Gender</b></td>
-				<td align="left"><b>Sex</b></td>
-				<td align="left"><b>Language</b></td>
-				<td align="left"><b>Race</b></td>
-				<td align="left"><b>Ethnicity</b></td></tr>';
+				echo'<table class="patient-info"><thead>
+				<tr><th scope="col" align="left"><b>PatientID</b></th>
+				<th scope="col" align="left"><b>First Name</b></th>
+				<th scope="col" lign="left"><b>Middle Name</b></th>
+				<th scope="col" align="left"><b>Last Name</b></th>
+				<th scope="col" align="left"><b>DOB</b></th>
+				<th scope="col" align="left"><b>Gender</b></th>
+				<th scope="col" align="left"><b>Sex</b></th>
+				<th scope="col" align="left"><b>Language</b></th>
+				<th scope="col" align="left"><b>Race</b></th>
+				<th scope="col" align="left"><b>Ethnicity</b></th></tr></thead>';
 
 				while($row = mysqli_fetch_array($responce)){
 
@@ -42,7 +41,7 @@
 					$row['Sex'] . '</td><td align="left">' .
 					$row['Language'] . '</td><td align="left">' .
 					$row['Race'] . '</td><td align="left">'.
-					$row['Ethnicity'] . '</td><td align="left">';
+					$row['Ethnicity'] . '</td>';
 					echo '</tr>';
 				}
 
