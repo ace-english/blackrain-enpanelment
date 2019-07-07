@@ -146,11 +146,19 @@ input[type=submit] {
 
 .patient-info{
 	width:80%;
+	margin-left:100px;
+	background:white;
+	border-radius:10px;
+	padding:5px;
 }
 
 .patient-info td div{
 	height:100%;
 	
+}
+
+.patient-info th{
+	border-bottom:solid 1px #555;
 }
 
 .patient-info tr{
@@ -205,7 +213,7 @@ input[type=submit] {
 	display: inline-block;
 	margin:auto;
 	padding: 14px 20px 14px 20px;
-	border-radius: 2px;
+	border-radius: 20px;
 	color: white;
 	text-decoration: none;
 }

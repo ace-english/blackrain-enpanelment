@@ -17,7 +17,6 @@
 				<label>Patient Name:</label>
 				<input type="text" label="patientName" name="patientFName" placeholder="First Name">
 				<input type="text" label="patientName" name="patientLName" placeholder="Last Name">
-				<input type="hidden" name="testing" value="test"  id="wewew">
 				<input type="submit" name="searchUser" value="Search"  id="searchUser">
 				<input type="submit" name="searchAll" value="Search All Patients"  id="searchAll">
 			</form>
@@ -29,7 +28,7 @@
 		if(isset($_POST['searchAll'])){
 			require_once('code/connect.php');
 
-			$query = "SELECT Fname, Lname, DOB, Sex, PatientID FROM patient";
+			$query = "SELECT Fname, Lname, DOB, Sex FROM patient";
 			$responce = @mysqli_query($dbc, $query);
 			$boxLimit = 4;
 			$count = 0;
@@ -49,13 +48,10 @@
 					<b><h3>'. $row['Fname'] . '</h3></b><h5>'. $row['Lname'] . '</h5>
 					<li> DOB: '. $row['DOB'] . '</li>
 					<li> Sex: '. $row['Sex'] . '</li>
+					<li>Health Status: Alive</li>
 					<li>Last Visit: 365 days ago</li>
-					<form id="selecting" method="post" action="https://blackrain-technologies.com/patientSelect.php">
-					<input type="hidden" name='. $row['PatientID'] .' value='. $row['PatientID'] .'>
-					</form>
-					<button class="button" type="submit" form="selecting"  name="SelectPat" value='. $row['PatientID'] .'>Select Patient</button>
+					<li>Care Team: Team Deep</li>
 					</div>
-
 					</td>';
 
 					if ($count > $boxLimit){
@@ -81,10 +77,10 @@
 			$query = '';
 
 			if($pid=='' && $f_name=='' && $l_name==''){
-				echo'<div class="floating-box">Please enter in one of the following: Patient ID or Patients first and last name.</div>' . filter_var($_POST['testing']);
+				echo'<div class="floating-box">Please enter in one of the following: Patient ID or Patients first and last name.</div>';
 			}
-			if($f_name != '') {
-				$query = "SELECT Fname, Lname, DOB, Sex FROM patient WHERE Fname = ". $f_name;
+			if($f_name != '' && $l_name!= '') {
+				$query = 'SELECT Fname, Lname, DOB, Sex FROM patient WHERE Fname = "$f_name" and Lname = "$l_name"';
 			}
 			if($pid != ''){
 				$query = "SELECT Fname, Lname, DOB, Sex FROM patient WHERE PatientID = ". $pid;
@@ -106,12 +102,9 @@
 						<b><h3>'. $row['Fname'] . '</h3></b><h5>'. $row['Lname'] . '</h5>
 						<li> DOB: '. $row['DOB'] . '</li>
 						<li> Sex: '. $row['Sex'] . '</li>
+						<li>Health Status: Alive</li>
 						<li>Last Visit: 365 days ago</li>
 						<li>Care Team: Team Deep</li>
-						<form id = '. $row['PatientID'] .' method="post" action="https://blackrain-technologies.com/patientSelect.php">
-						<input type="hidden" name='. $row['PatientID'] .'value= '. $row['PatientID'] .'>
-						</form>
-						<input type="submit" form = '. $row['PatientID'] .' name="SelectPat" value="Select Patient"  id="SelectingPatient">
 						</div>
 						</td>';
 
