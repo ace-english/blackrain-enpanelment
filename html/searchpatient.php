@@ -50,7 +50,7 @@
 					<li> DOB: '. $row['DOB'] . '</li>
 					<li> Sex: '. $row['Sex'] . '</li>
 					<li>Last Visit: 365 days ago</li>
-					<form id="selecting" method="post" action="https://blackrain-technologies.com/patientSelect.php">
+					<form id="selecting" method="post" action="patientselect.php">
 					<input type="hidden" name='. $row['PatientID'] .' value='. $row['PatientID'] .'>
 					</form>
 					<button class="button" type="submit" form="selecting"  name="SelectPat" value='. $row['PatientID'] .'>Select Patient</button>
