@@ -70,17 +70,19 @@ input[type=submit] {
 #home-content{
 	vertical-align: top;
 	overflow-y:scroll;
-	max-height: 460px;
+	height:490px;
 }
 
-#empanelment, #PCP{
-	width:200px;
-	height: 200px;
+.large-side-button{
+	width:150px;
+	height: 150px;
 	background-color: #f5f5f5;
 	text-align: center;
+	cursor: pointer;
+	vertical-align: middle;
 }
 
-#empanelment:hover, #PCP:hover{
+.large-side-button:hover{
 	background-color: var(--main);
 }
 
@@ -132,8 +134,8 @@ input[type=submit] {
 .content{
 	margin-left:var(--side_menu_width);
 	padding-left:20px;
-	width:80%;
-	
+	max-width:80%;
+	display:inline-block;
 }
 
 #hamburger{

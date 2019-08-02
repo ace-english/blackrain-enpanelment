@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Page Not Found</title>
+<title>Patient Info </title>
 <link rel="stylesheet" href="stylesheets/style.css">
 <link rel="stylesheet" href="stylesheets/kaiser.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -112,51 +112,46 @@
 ?>
 	
 
-<script type="text/javascript">
-	var str = "<?php echo $phpProviderName ?>"; // "A string here"
-</script>
-
-
-<script>
-	function empanelment(){
-		document.getElementById("home-content").innerHTML = str; 
-	}
-	function PCP(){
-		document.getElementById("home-content").innerHTML = "adasdas";
-	}
-
-</script>
-
 <div class="tabs-inner" style="text-align:center;">
 	<table class='home-table'>
-		<tr><td id='empanelment' onclick="empanelment()">
-			Empanelment
-		</td>
-		<td rowspan='2' >
-		<div id='home-content'>
-		<p>
-	<?php  
-			echo'
-					<div class="floating-box" style="border: 1px solid black;" id="searchMe">
-					<b><h3>'. $phpFname . '</h3></b>
-					<h5>'. $row['Lname'] . '</h5>
-					<li> DOB: '. $row['DOB'] . '</li>
-					<li> Sex: '. $row['Sex'] . '</li>
-					<li>Last Visit: 365 days ago</li>
-					</div>';
-	?>
-		</p>
-	</div>
-		</td></tr>
-		<tr><td id='PCP' onclick="PCP()">PCP</td></tr>
-		</table>
-			
+		<tr>
+			<td id='info'  class="large-side-button" onclick="info()">Patient Info</td>
+			<td rowspan='3' >
+				<div id='home-content'>
+				<p>
+				<?php echo '					<div class="floating-box" style="border: 1px solid black;" id="searchMe">					<b><h3>'. $phpFname . '</h3></b>					<h5>'. $row['Lname'] . '</h5>					<li> DOB: '. $row['DOB'] . '</li>					<li> Sex: '. $row['Sex'] . '</li>					<li>Last Visit: 365 days ago</li>					</div>';
+				?>
+				</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td id='empanelment' class="large-side-button" onclick="empanelment()">
+				Empanelment
+			</td>
+		</tr>
+		<tr><td id='PCP'  class="large-side-button" onclick="PCP()">PCP</td></tr>			
 	</table>
-
 </div>
 
 
-
+<script type="text/javascript">
+	var str = "<?php echo $phpProviderName ?>"; // "A string here"
+	
+	function empanelment(){
+		document.getElementById("home-content").innerHTML = "Reccomended Provider: " + str; 
+	}
+	function PCP(){
+		document.getElementById("home-content").innerHTML = "TBD";
+	}
+	
+	var patient_info=document.getElementById("home-content").innerHTML;
+	
+	function info(){
+		document.getElementById("home-content").innerHTML = patient_info;
+	}
+	
+</script>
 
 </body>
 </html>
