@@ -108,7 +108,7 @@
 						<li> Sex: '. $row['Sex'] . '</li>
 						<li>Last Visit: 365 days ago</li>
 						<li>Care Team: Team Deep</li>
-						<form id = '. $row['PatientID'] .' method="post" action="https://blackrain-technologies.com/patientSelect.php">
+						<form id = '. $row['PatientID'] .' method="post" action="patientselect.php">
 						<input type="hidden" name='. $row['PatientID'] .'value= '. $row['PatientID'] .'>
 						</form>
 						<input type="submit" form = '. $row['PatientID'] .' name="SelectPat" value="Select Patient"  id="SelectingPatient">

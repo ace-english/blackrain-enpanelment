@@ -111,6 +111,23 @@
 		//=========== 4-CUT ENDS ============================
 ?>
 	
+<div class="overlay" id="provider-overlay">
+	<div class="tabs-inner">
+	<form>
+	<label>Select new provider:</label>
+	<?
+	$sql="SELECT Lname FROM provider";
+	$q=mysql_query($sql);
+	echo "<select name='provider'>"; 
+	while($row = mysql_fetch_array($q)) 
+	{        
+	echo "<option value='".$row['Lname']."'>".$row['Lname']."</option>"; 
+	}
+	echo "</select>";
+	?>
+	<button type="submit" class="button">
+	</form>
+</div>
 
 <div class="tabs-inner" style="text-align:center;">
 	<table class='home-table'>
@@ -119,8 +136,10 @@
 			<td rowspan='3' >
 				<div id='home-content'>
 				<p>
-				<?php echo '					<div class="floating-box" style="border: 1px solid black;" id="searchMe">					<b><h3>'. $phpFname . '</h3></b>					<h5>'. $row['Lname'] . '</h5>					<li> DOB: '. $row['DOB'] . '</li>					<li> Sex: '. $row['Sex'] . '</li>					<li>Last Visit: 365 days ago</li>					</div>';
+				<?php
+				echo '					<div class="floating-box" style="border: 1px solid black;" id="searchMe">					<b><h3>'. $phpFname . '</h3></b>					<h5>'. $row['Lname'] . '</h5>					<li> DOB: '. $row['DOB'] . '</li>					<li> Sex: '. $row['Sex'] . '</li>					<li>Last Visit: 365 days ago</li>					';
 				?>
+				<a class="button" onclick="document.getElementByID('provider-overlay').style.display='block;'">Change Provider</a></div>
 				</p>
 				</div>
 			</td>
@@ -133,6 +152,7 @@
 		<tr><td id='PCP'  class="large-side-button" onclick="PCP()">PCP</td></tr>			
 	</table>
 </div>
+
 
 
 <script type="text/javascript">
