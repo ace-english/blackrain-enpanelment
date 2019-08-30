@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Patient Info </title>
+<title>Page Not Found</title>
 <link rel="stylesheet" href="stylesheets/style.css">
 <link rel="stylesheet" href="stylesheets/kaiser.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -21,6 +21,7 @@
 		require_once('code/connect.php');			
 	
 		//Variable initialization
+		//Testing
 		$pid = filter_var($_POST["SelectPat"]);	
 		$query = "SELECT Fname, Lname, DOB, Sex FROM patient WHERE PatientID = ". $pid;
 		$responce = @mysqli_query($dbc, $query);
@@ -111,67 +112,52 @@
 		//=========== 4-CUT ENDS ============================
 ?>
 	
-<div class="overlay" id="provider-overlay">
-	<div class="tabs-inner">
-	<form>
-	<label>Select new provider:</label>
-	<?
-	$sql="SELECT Lname FROM provider";
-	$q=mysql_query($sql);
-	echo "<select name='provider'>"; 
-	while($row = mysql_fetch_array($q)) 
-	{        
-	echo "<option value='".$row['Lname']."'>".$row['Lname']."</option>"; 
-	}
-	echo "</select>";
-	?>
-	<button type="submit" class="button">
-	</form>
-</div>
-
-<div class="tabs-inner" style="text-align:center;">
-	<table class='home-table'>
-		<tr>
-			<td id='info'  class="large-side-button" onclick="info()">Patient Info</td>
-			<td rowspan='3' >
-				<div id='home-content'>
-				<p>
-				<?php
-				echo '					<div class="floating-box" style="border: 1px solid black;" id="searchMe">					<b><h3>'. $phpFname . '</h3></b>					<h5>'. $row['Lname'] . '</h5>					<li> DOB: '. $row['DOB'] . '</li>					<li> Sex: '. $row['Sex'] . '</li>					<li>Last Visit: 365 days ago</li>					';
-				?>
-				<a class="button" onclick="document.getElementByID('provider-overlay').style.display='block;'">Change Provider</a></div>
-				</p>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td id='empanelment' class="large-side-button" onclick="empanelment()">
-				Empanelment
-			</td>
-		</tr>
-		<tr><td id='PCP'  class="large-side-button" onclick="PCP()">PCP</td></tr>			
-	</table>
-</div>
-
-
 
 <script type="text/javascript">
 	var str = "<?php echo $phpProviderName ?>"; // "A string here"
-	
+</script>
+
+
+<script>
 	function empanelment(){
-		document.getElementById("home-content").innerHTML = "Reccomended Provider: " + str; 
+		document.getElementById("home-content").innerHTML = "From the 4-Cut method, the best provider for you will be " + str; 
 	}
 	function PCP(){
-		document.getElementById("home-content").innerHTML = "TBD";
+		document.getElementById("home-content").innerHTML = "adasdas";
 	}
-	
-	var patient_info=document.getElementById("home-content").innerHTML;
-	
-	function info(){
-		document.getElementById("home-content").innerHTML = patient_info;
-	}
-	
+
 </script>
+
+<div class="tabs-inner" style="text-align:center;">
+	<table class='home-table'>
+		<tr><td id='empanelment' onclick="empanelment()">
+			Empanelment
+		</td>
+		<td rowspan='2' >
+		<div id='home-content'>
+		<p>
+	<?php  
+			echo'
+					<div class="floating-box" style="border: 1px solid black;" id="searchMe">
+					<b><h3>'. $phpFname . '</h3></b>
+					<h5>'. $row['Lname'] . '</h5>
+					<li> DOB: '. $row['DOB'] . '</li>
+					<li> Sex: '. $row['Sex'] . '</li>
+					<li>Last Visit: 365 days ago</li>
+					</div>';
+	?>
+		</p>
+	</div>
+		</td></tr>
+		<tr><td id='PCP' onclick="PCP()">PCP</td></tr>
+		</table>
+			
+	</table>
+
+</div>
+
+
+
 
 </body>
 </html>

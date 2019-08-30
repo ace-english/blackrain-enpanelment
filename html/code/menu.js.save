@@ -10,11 +10,11 @@ window.onload = function () {
 	var menuLinks=[
 		{name:"Home",link:"index.html"},
 		{name:"Log In",link:"login.html"},
-		
 		{name:"Add Patient",link:"addpatient.html"},
-		{name:"Add Provider",link:"../addprovider.php"},
+		{name:"Add Provider",link:"addprovider.html"}
+,
 		{name:"Search Patient", link:"searchPatient.php"},
-		{name:"View Provider",link:"../getproviderinfo.php"},
+		{name:"View Provider",link:"getproviderinfo.html"},
 		{name:"View Database", link:"getpatientinfo.php"},
 		{name:"Analytics",link:"docpatient.html"},
 		{name:"Settings", link:"settings.html"}
