@@ -22,7 +22,7 @@ CREATE TABLE Request (
   PcpAssignmentID int NULL,
   ProviderID int NULL,
   ProviderName varchar(155) NULL,
-  VisitCnt int NULL,
+  VisitCnt int NULL
 ) ENGINE=InnoDB;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -44,6 +44,6 @@ CREATE TABLE Panel (
   Specialty1 varchar(155) NULL,
   Specialty2 varchar(155) NULL,
   Status char(1) NULL,
-  Size int NULL,
+  Size int NULL
 ) ENGINE=InnoDB;
 
