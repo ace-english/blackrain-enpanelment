@@ -16,123 +16,181 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `appointment`
+-- Table structure for table `Facility`
 --
 
-DROP TABLE IF EXISTS `appointment`;
+DROP TABLE IF EXISTS Facility;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `appointment` (
-  `AppID` int(11) NOT NULL,
-  `ProviderID` int(11) NOT NULL,
-  `PatientID` int(11) NOT NULL,
-  `Date` date NOT NULL,
-  `SurveyID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`AppID`),
-  UNIQUE KEY `AppID` (`AppID`),
-  KEY `ProviderID_idx` (`ProviderID`),
-  KEY `PatientID_idx` (`PatientID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+ --SET character_set_client = utf8mb4 ;
+CREATE TABLE Facility (
+  FacilityID int NOT NULL AUTO_INCREMENT,
+  FacilityName varchar(255) NULL,
+  NPI varchar(15) NULL,
+  LocationId varchar(155) NULL,
+  Status char(1) NULL,
+  CONSTRAINT PKFac PRIMARY KEY NONCLUSTERED (FacilityID)
+) ENGINE=InnoDB; --DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `empanelment`
+-- Table structure for table `Patient`
 --
 
-DROP TABLE IF EXISTS `empanelment`;
+DROP TABLE IF EXISTS Patient;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `empanelment` (
-  `EnpanelID` int(11) NOT NULL,
-  `ProviderID` int(11) NOT NULL,
-  `PatientID` int(11) NOT NULL,
-  `EffectiveDate` text,
-  `TeamDate` text,
-  `FailityID` int(11) NOT NULL,
-  PRIMARY KEY (`EnpanelID`),
-  KEY `ProviderID_idx` (`ProviderID`),
-  KEY `PatientID_idx` (`PatientID`),
-  KEY `FacilityID_idx` (`FailityID`),
-  CONSTRAINT `FacilityID` FOREIGN KEY (`FailityID`) REFERENCES `facility` (`facilityid`),
-  CONSTRAINT `PatientID` FOREIGN KEY (`PatientID`) REFERENCES `patient` (`patientid`),
-  CONSTRAINT `ProviderID` FOREIGN KEY (`ProviderID`) REFERENCES `provider` (`providerid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+ --SET character_set_client = utf8mb4 ;
+CREATE TABLE Patient (
+  PatientID int NOT NULL AUTO_INCREMENT,
+  FName varchar(155) NULL,
+  MName varchar(75) NULL,
+  LName varchar(155) NULL,
+  DOB date NULL,
+  Gender varchar(75) NULL,
+  Sex char(2) NULL,
+  Language varchar(155) NULL,
+  Race varchar(155) NULL,
+  Ethnicity varchar(155) NULL,
+  HealthPlanID1 varchar(75) NULL,
+  HealthPlanID2 varchar(75) NULL,
+  SubscriberID1 varchar(75) NULL,
+  SubscriberID2 varchar(75) NULL,
+  MRN varchar(75) NULL,
+  Status char(1) NULL,
+  CONSTRAINT PKPat PRIMARY KEY NONCLUSTERED (PatientID)
+) ENGINE=InnoDB; --DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `facility`
+-- Table structure for table `Provider`
 --
 
-DROP TABLE IF EXISTS `facility`;
+DROP TABLE IF EXISTS Provider;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `facility` (
-  `FacilityID` int(11) NOT NULL,
-  `FacilityName` text,
-  PRIMARY KEY (`FacilityID`),
-  UNIQUE KEY `FacilityID` (`FacilityID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+ --SET character_set_client = utf8mb4 ;
+CREATE TABLE Provider (
+  ProviderID int NOT NULL AUTO_INCREMENT,
+  FName varchar(155) NULL,
+  MName varchar(75) NULL,
+  LName varchar(155) NULL,
+  NPI varchar(15) NULL,
+  Taxonomy varchar(155) NULL,
+  ProDesigniation varchar(155) NULL,
+  Available char(1) NULL,
+  Gender varchar(75) NULL,
+  DOB date NULL,
+  Title varchar(155) NULL,
+  Specialty1 varchar(155) NULL,
+  Specialty2 varchar(155) NULL,
+  Status char(1) NULL,
+  CONSTRAINT PKProv PRIMARY KEY NONCLUSTERED (ProviderID)
+) ENGINE=InnoDB; --DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `patient`
+-- Table structure for table `Encounter`
 --
 
-DROP TABLE IF EXISTS `patient`;
+DROP TABLE IF EXISTS Encounter;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `patient` (
-  `PatientID` int(11) NOT NULL,
-  `Fname` text NOT NULL,
-  `Mname` text,
-  `Lname` text NOT NULL,
-  `DOB` date DEFAULT NULL,
-  `Gender` text,
-  `Sex` text,
-  `Language` text,
-  `Race` text,
-  `Ethnicity` text,
-  PRIMARY KEY (`PatientID`),
-  UNIQUE KEY `PatientID_UNIQUE` (`PatientID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+ --SET character_set_client = utf8mb4 ;
+CREATE TABLE Encounter (
+  EncounterID int NOT NULL AUTO_INCREMENT,
+  ProviderID int NOT NULL,
+  PatientID int NOT NULL,
+  DOS datetime NULL,
+  EncId varchar(75) NULL,
+  FacilityID int NOT NULL,
+  ProcedureCodes char(10) NULL,
+  Modifier1 char(10) NULL,
+  Modifier2 char(10) NULL,
+  Diagnose1 char(10) NULL,
+  Diagnose2 char(10) NULL,
+  Diagnose3 char(10) NULL,
+  Diagnose4 char(10) NULL,
+  Diagnose5 char(10) NULL,
+  Diagnose6 char(10) NULL,
+  Diagnose7 char(10) NULL,
+  Diagnose8 char(10) NULL,
+  Diagnose9 char(10) NULL,
+  Diagnose10 char(10) NULL,
+  Status char(1) NULL,
+  CONSTRAINT PKEnc PRIMARY KEY CLUSTERED (EncounterID, PatientID, ProviderID, FacilityID),
+  CONSTRAINT FacilityID FOREIGN KEY (FacilityID) REFERENCES Facility (FacilityID),
+  CONSTRAINT PatientID FOREIGN KEY (PatientID) REFERENCES Patient (PatientID),
+  CONSTRAINT ProviderID FOREIGN KEY (ProviderID) REFERENCES Provider (ProviderID)
+) ENGINE=InnoDB; --DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `provider`
+-- Table structure for table `Empanelment`
 --
 
-DROP TABLE IF EXISTS `provider`;
+DROP TABLE IF EXISTS Empanelment;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `provider` (
-  `ProviderID` int(11) NOT NULL,
-  `Fname` text,
-  `Mname` text,
-  `Lname` text,
-  `NpiNumber` int(11) DEFAULT NULL,
-  `Designiation` text,
-  PRIMARY KEY (`ProviderID`),
-  UNIQUE KEY `ProviderID` (`ProviderID`),
-  UNIQUE KEY `NpiNumber` (`NpiNumber`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+ --SET character_set_client = utf8mb4 ;
+CREATE TABLE Empanelment (
+  PcpAssignmentID int NOT NULL AUTO_INCREMENT,
+  ProviderID int NOT NULL,
+  PatientID int NOT NULL,
+  FacilityID int NOT NULL,
+  ProviderName varchar(155) NULL,
+  PatientName varchar(155) NULL,
+  EffectiveDate datetime NULL,
+  TerminationDate datetime NULL,
+  FacilityName varchar(155) NULL,
+  Insurance1 varchar(155) NULL,
+  Insurance2 varchar(155) NULL,
+  CurrentRecordFlag char(1) NULL,
+  Status char(1) NULL,
+  CONSTRAINT PKEmp PRIMARY KEY NONCLUSTERED (PcpAssignmentID, ProviderID, FacilityID, PatientID),
+  CONSTRAINT FacilityID_2 FOREIGN KEY (FacilityID) REFERENCES Facility (FacilityID),
+  CONSTRAINT PatientID_2 FOREIGN KEY (PatientID) REFERENCES Patient (PatientID),
+  CONSTRAINT ProviderID_2 FOREIGN KEY (ProviderID) REFERENCES Provider (ProviderID)
+) ENGINE=InnoDB; --DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `PcpAssignment`
 --
-
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS PcpAssignment;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `users` (
-  `UserID` int(11) NOT NULL,
-  `Password` text NOT NULL,
-  `UserType` text NOT NULL,
-  `StyleType` text,
-  `UserName` varchar(15) NOT NULL,
-  PRIMARY KEY (`UserID`),
-  UNIQUE KEY `UserName_UNIQUE` (`UserName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+ --SET character_set_client = utf8mb4 ;
+CREATE TABLE PcpAssignment (
+  PcpAssignmentID int NOT NULL AUTO_INCREMENT,
+  ProviderID int NOT NULL,
+  FacilityID int NOT NULL,
+  PatientID int NOT NULL,
+  EffectiveDate datetime NULL,
+  TerminationDate datetime NULL,
+  Insurance1 varchar(155) NULL,
+  Insurance2 varchar(155) NULL,
+  CurrentRecordFlag char(1) NULL,
+  Status char(1) NULL,
+  CONSTRAINT PKPcp PRIMARY KEY NONCLUSTERED (PcpAssignmentID, ProviderID, FacilityID, PatientID),
+  CONSTRAINT FacilityID_3 FOREIGN KEY (FacilityID) REFERENCES Facility (FacilityID),
+  CONSTRAINT PatientID_3 FOREIGN KEY (PatientID) REFERENCES Patient (PatientID),
+  CONSTRAINT ProviderID_3 FOREIGN KEY (ProviderID) REFERENCES Provider (ProviderID)
+) ENGINE=InnoDB; --DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Users`
+--
+DROP TABLE IF EXISTS Users;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ --SET character_set_client = utf8mb4 ;
+CREATE TABLE Users (
+  UserID int NOT NULL AUTO_INCREMENT,
+  Password varchar(15) NOT NULL,
+  UserType char(2) NOT NULL,
+  StyleType varchar(25) NOT NULL,
+  UserName varchar(15) NOT NULL,
+  Status char(1) NULL,
+  CONSTRAINT PKUser PRIMARY KEY NONCLUSTERED (UserID),
+  UNIQUE KEY UserName_UNIQUE (UserName)
+) ENGINE=InnoDB; --DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
