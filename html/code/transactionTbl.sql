@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS Request;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  --SET character_set_client = utf8mb4 ;
 CREATE TABLE Request (
-  PatientID
+  PatientID int NULL,
   FName varchar(155) NULL,
   MName varchar(155) NULL,
   LName varchar(155) NULL,
