@@ -190,6 +190,7 @@ CREATE TABLE Provider (
   TaxmyGrp3 varchar(75) NULL,
   TaxmyGrp4 varchar(75) NULL,
   TaxmyGrp5 varchar(75) NULL,
+  Size int NULL,
   Status char(1) NULL,
   CONSTRAINT PKProv PRIMARY KEY NONCLUSTERED (ProviderID),
   UNIQUE (NPI)
