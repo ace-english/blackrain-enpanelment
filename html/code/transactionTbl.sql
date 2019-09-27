@@ -13,16 +13,9 @@ DROP TABLE IF EXISTS Request;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  --SET character_set_client = utf8mb4 ;
 CREATE TABLE Request (
-  PatientID int NULL,
-  FName varchar(155) NULL,
-  MName varchar(155) NULL,
-  LName varchar(155) NULL,
-  DOB date NULL,
-  MRN varchar(75) NULL,
-  PcpAssignmentID int NULL,
-  ProviderID int NULL,
-  ProviderName varchar(155) NULL,
-  VisitCnt int NULL
+SELECT Patient.PatientID, Patient.FName, Patient.MName, Patient.LName, Patient.DOB, Patient.MRN, Empanelment.PcpAssignmentID, Empanelment.ProviderID, Empanelment.ProviderName
+FROM Patient, Empanelment
+WHERE Patient.PatientID = Empanelment.PatientID
 ) ENGINE=InnoDB;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -30,6 +23,8 @@ DROP TABLE IF EXISTS Panel;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  --SET character_set_client = utf8mb4 ;
 CREATE TABLE Panel (
+SELECT ProviderID, FName, MName, LName, NPI, Taxonomy, ProDesignation, Available, Gender, DOB, Title, Specialty1, Specialty2, Status, Size, panelStatus
+FROM 
   ProviderID int NULL,
   FName varchar(155) NULL,
   MName varchar(75) NULL,
@@ -44,6 +39,7 @@ CREATE TABLE Panel (
   Specialty1 varchar(155) NULL,
   Specialty2 varchar(155) NULL,
   Status char(1) NULL,
-  Size int NULL
+  Size int NULL,
+  panelStatus char(1) NULL
 ) ENGINE=InnoDB;
 
