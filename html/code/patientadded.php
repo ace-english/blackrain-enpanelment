@@ -8,9 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {//Check it is comming from a form
     require_once('DBInfo.php');
 
     $pid = rand(200000,999999);
-    $f_name = filter_var($_POST["Fname"]);
-    $m_name = filter_var($_POST["Mname"]);
-    $l_name = filter_var($_POST["Lname"]);
+    $f_name = filter_var($_POST["FName"]);
+    $m_name = filter_var($_POST["MName"]);
+    $l_name = filter_var($_POST["LName"]);
     $date = filter_var($_POST["DOB"]);
     $u_genders= filter_var($_POST["Gender"]);
     $lang = filter_var($_POST["Language"]);
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {//Check it is comming from a form
         die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
     }   
 
-    $query = "SELECT ProviderID, provider.FacilityID, Fname, FacilityName FROM health.provider inner join facility where provider.FacilityID = facility.FacilityID";
+    $query = "SELECT ProviderID, Provider.FacilityID, FName, FacilityName FROM health.Provider inner join Facility where Provider.FacilityID = Facility.FacilityID";
     $responce = @mysqli_query($dbc, $query);
     
     while($row = mysqli_fetch_array($responce)){
@@ -35,17 +35,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {//Check it is comming from a form
     $phpVisitCount = mt_rand(0,30);
     $phpDate = date("Y-m-d H:i:s",$int);
 
-    $statementTwo = $mysqli->prepare("INSERT INTO empanelment (ProviderID, ProviderName, FailityID, PatientName, PatientID,
-        VisitCount) VALUES (?, ?, ?,
-        ?,?,?)");
+    $statementTwo = $mysqli->prepare("INSERT INTO Empanelment (ProviderID, ProviderName, FailityID, PatientName, PatientID,VisitCount) VALUES (?, ?, ?,?,?,?)");
 
-    $statementTwo->bind_param('isisii', $row['ProviderID'], $row['Fname'], $row['FacilityID'], $f_name, $pid,$phpVisitCount);
+    $statementTwo->bind_param('isisii', $row['ProviderID'], $row['FName'], $row['FacilityID'], $f_name, $pid,$phpVisitCount);
 
     $mysqli->execute(statementTwo);
     }
 
-    $statement = $mysqli->prepare("INSERT INTO patient (PatientID, Fname, Mname,
-        Lname, DOB, Gender, Sex, Language, Race, Ethnicity) VALUES (?, ?, ?,
+    $statement = $mysqli->prepare("INSERT INTO Patient (PatientID, FName, MName,
+        LName, DOB, Gender, Sex, Language, Race, Ethnicity) VALUES (?, ?, ?,
         ?, ?, ?, ?, ?, ?, ?)");
 
     //prepare sql insert query
