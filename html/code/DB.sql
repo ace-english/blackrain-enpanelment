@@ -1,13 +1,13 @@
-
---SET NAMES utf8;
-
 --
 -- Table structure for table `Patient`
 --
 
 DROP TABLE IF EXISTS Patient;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- --SET character_set_client = utf8mb4 ;
+
+DELIMITER $$
+
+CREATE PROCEDURE AddPatientTbl()
+BEGIN
 CREATE TABLE Patient (
   PatientID int NOT NULL,
   FName varchar(155) NULL,
@@ -19,7 +19,9 @@ CREATE TABLE Patient (
   Language varchar(155) NULL,
   Race varchar(155) NULL,
   Ethnicity varchar(155) NULL,
+  Insurance1 varchar(155) NULL,
   HealthPlanID1 varchar(75) NULL,
+  Insurance2 varchar(155) NULL,
   HealthPlanID2 varchar(75) NULL,
   SubscriberID1 varchar(75) NULL,
   SubscriberID2 varchar(75) NULL,
@@ -27,16 +29,22 @@ CREATE TABLE Patient (
   Status char(1) NULL,
   CONSTRAINT PKPat PRIMARY KEY NONCLUSTERED (PatientID),
   UNIQUE (MRN)
-) ENGINE=InnoDB; --DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB;
+
+END$$
+
+DELIMITER ;
 
 --
 -- Table structure for table `Provider`
 --
 
 DROP TABLE IF EXISTS Provider;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- --SET character_set_client = utf8mb4 ;
+
+DELIMITER $$
+
+CREATE PROCEDURE AddProviderTbl()
+BEGIN 
 CREATE TABLE Provider (
   ProviderID int NOT NULL AUTO_INCREMENT,
   NPI varchar(15) NOT NULL,
@@ -194,16 +202,22 @@ CREATE TABLE Provider (
   Status char(1) NULL,
   CONSTRAINT PKProv PRIMARY KEY NONCLUSTERED (ProviderID),
   UNIQUE (NPI)
-) ENGINE=InnoDB; --DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB;
+
+END$$
+
+DELIMITER ;
 
 --
 -- Table structure for table `Facility`
 --
 
 DROP TABLE IF EXISTS Facility;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- --SET character_set_client = utf8mb4 ;
+
+DELIMITER $$
+
+CREATE PROCEDURE AddFacilityTbl()
+BEGIN 
 CREATE TABLE Facility (
   FacilityID int NOT NULL AUTO_INCREMENT,
   FacilityName varchar(255) NULL,
@@ -212,16 +226,22 @@ CREATE TABLE Facility (
   Status char(1) NULL,
   CONSTRAINT PKFac PRIMARY KEY NONCLUSTERED (FacilityID),
   CONSTRAINT NPI FOREIGN KEY (NPI) REFERENCES Provider (NPI)
-) ENGINE=InnoDB; --DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB;
+
+END$$
+
+DELIMITER ;
 
 --
 -- Table structure for table `Encounter`
 --
 
 DROP TABLE IF EXISTS Encounter;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- --SET character_set_client = utf8mb4 ;
+
+DELIMITER $$
+
+CREATE PROCEDURE AddEncounterTbl()
+BEGIN 
 CREATE TABLE Encounter (
   EncounterID int NOT NULL AUTO_INCREMENT,
   ProviderID int NULL,
@@ -249,15 +269,21 @@ CREATE TABLE Encounter (
   CONSTRAINT PatientID FOREIGN KEY (PatientID) REFERENCES Patient (PatientID),
   CONSTRAINT ProviderID FOREIGN KEY (ProviderID) REFERENCES Provider (ProviderID),
   CONSTRAINT NPI_2 FOREIGN KEY (NPI) REFERENCES Provider (NPI)
-) ENGINE=InnoDB; --DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB;
+
+END$$
+
+DELIMITER ;
 
 --
 -- Table structure for table `PcpAssignment`
 --
 DROP TABLE IF EXISTS PcpAssignment;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- --SET character_set_client = utf8mb4 ;
+
+DELIMITER $$
+
+CREATE PROCEDURE AddPcpAssignmentTbl()
+BEGIN
 CREATE TABLE PcpAssignment (
   PcpAssignmentID int NOT NULL AUTO_INCREMENT,
   NPI varchar(15) NOT NULL,
@@ -274,16 +300,22 @@ CREATE TABLE PcpAssignment (
   CONSTRAINT PatientID_2 FOREIGN KEY (PatientID) REFERENCES Patient (PatientID),
   CONSTRAINT NPI_3 FOREIGN KEY (NPI) REFERENCES Provider (NPI),
   CONSTRAINT Unique_Key UNIQUE (PatientID, NPI)
-) ENGINE=InnoDB; --DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB;
+
+END$$
+
+DELIMITER ;
 
 --
 -- Table structure for table `Empanelment`
 --
 
 DROP TABLE IF EXISTS Empanelment;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- --SET character_set_client = utf8mb4 ;
+
+DELIMITER $$
+
+CREATE PROCEDURE AddEmpanelmentTbl()
+BEGIN 
 CREATE TABLE Empanelment (
   PcpAssignmentID int NULL,
   NPI varchar(15) NOT NULL,
@@ -294,8 +326,6 @@ CREATE TABLE Empanelment (
   EffectiveDate datetime NULL,
   TerminationDate datetime NULL,
   FacilityName varchar(155) NULL,
-  Insurance1 varchar(155) NULL,
-  Insurance2 varchar(155) NULL,
   CurrentRecordFlag char(1) NULL,
   Status char(1) NULL,
   CONSTRAINT PKEmp UNIQUE KEY NONCLUSTERED (PatientID),
@@ -304,15 +334,21 @@ CREATE TABLE Empanelment (
   CONSTRAINT NPI_4 FOREIGN KEY (NPI) REFERENCES Provider (NPI),
   CONSTRAINT PcpAssignmentID FOREIGN KEY (PcpAssignmentID) REFERENCES PcpAssignment (PcpAssignmentID),
   UNIQUE (PatientID)
-) ENGINE=InnoDB; --DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB;
+
+END$$
+
+DELIMITER ;
 
 --
 -- Table structure for table `Users`
 --
 DROP TABLE IF EXISTS Users;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- --SET character_set_client = utf8mb4 ;
+
+DELIMITER $$
+
+CREATE PROCEDURE AddUsersTbl()
+BEGIN 
 CREATE TABLE Users (
   UserID int NOT NULL AUTO_INCREMENT,
   Password varchar(15) NOT NULL,
@@ -322,5 +358,18 @@ CREATE TABLE Users (
   Status char(1) NULL,
   CONSTRAINT PKUser PRIMARY KEY NONCLUSTERED (UserID),
   UNIQUE (UserName)
-) ENGINE=InnoDB; --DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 
+END$$
+
+DELIMITER ;
+
+
+--Calls stored procedures to add tables
+CALL AddPatientTbl();
+CALL AddProviderTbl();
+CALL AddFacilityTbl();
+CALL AddEncounterTbl();
+CALL AddPcpAssignmentTbl();
+CALL AddEmpanelmentTbl();
+CALL AddUsersTbl();
