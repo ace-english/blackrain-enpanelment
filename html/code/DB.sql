@@ -1,13 +1,13 @@
 --
 -- Table structure for table `Patient`
 --
-
-DROP TABLE IF EXISTS Patient;
-
 DELIMITER $$
 
 CREATE PROCEDURE AddPatientTbl()
 BEGIN
+
+DROP TABLE IF EXISTS Patient;
+
 CREATE TABLE Patient (
   PatientID int NOT NULL,
   FName varchar(155) NULL,
@@ -38,13 +38,13 @@ DELIMITER ;
 --
 -- Table structure for table `Provider`
 --
-
-DROP TABLE IF EXISTS Provider;
-
 DELIMITER $$
 
 CREATE PROCEDURE AddProviderTbl()
-BEGIN 
+BEGIN
+
+DROP TABLE IF EXISTS Provider;
+
 CREATE TABLE Provider (
   ProviderID int NOT NULL AUTO_INCREMENT,
   NPI varchar(15) NOT NULL,
@@ -211,13 +211,13 @@ DELIMITER ;
 --
 -- Table structure for table `Facility`
 --
-
-DROP TABLE IF EXISTS Facility;
-
 DELIMITER $$
 
 CREATE PROCEDURE AddFacilityTbl()
 BEGIN 
+
+DROP TABLE IF EXISTS Facility;
+
 CREATE TABLE Facility (
   FacilityID int NOT NULL AUTO_INCREMENT,
   FacilityName varchar(255) NULL,
@@ -235,13 +235,13 @@ DELIMITER ;
 --
 -- Table structure for table `Encounter`
 --
-
-DROP TABLE IF EXISTS Encounter;
-
 DELIMITER $$
 
 CREATE PROCEDURE AddEncounterTbl()
 BEGIN 
+
+DROP TABLE IF EXISTS Encounter;
+
 CREATE TABLE Encounter (
   EncounterID int NOT NULL AUTO_INCREMENT,
   ProviderID int NULL,
@@ -279,12 +279,13 @@ DELIMITER ;
 --
 -- Table structure for table `PcpAssignment`
 --
-DROP TABLE IF EXISTS PcpAssignment;
-
 DELIMITER $$
 
 CREATE PROCEDURE AddPcpAssignmentTbl()
 BEGIN
+
+DROP TABLE IF EXISTS PcpAssignment;
+
 CREATE TABLE PcpAssignment (
   PcpAssignmentID int NOT NULL AUTO_INCREMENT,
   NPI varchar(15) NOT NULL,
@@ -292,8 +293,6 @@ CREATE TABLE PcpAssignment (
   PatientID int NULL,
   EffectiveDate datetime NULL,
   TerminationDate datetime NULL,
-  Insurance1 varchar(155) NULL,
-  Insurance2 varchar(155) NULL,
   CurrentRecordFlag char(1) NULL,
   Status char(1) NULL,
   CONSTRAINT PKPcp PRIMARY KEY NONCLUSTERED (PcpAssignmentID),
@@ -310,13 +309,13 @@ DELIMITER ;
 --
 -- Table structure for table `Empanelment`
 --
-
-DROP TABLE IF EXISTS Empanelment;
-
 DELIMITER $$
 
 CREATE PROCEDURE AddEmpanelmentTbl()
 BEGIN 
+
+DROP TABLE IF EXISTS Empanelment;
+
 CREATE TABLE Empanelment (
   PcpAssignmentID int NULL,
   NPI varchar(15) NOT NULL,
@@ -344,12 +343,13 @@ DELIMITER ;
 --
 -- Table structure for table `Users`
 --
-DROP TABLE IF EXISTS Users;
-
 DELIMITER $$
 
 CREATE PROCEDURE AddUsersTbl()
 BEGIN 
+
+DROP TABLE IF EXISTS Users;
+
 CREATE TABLE Users (
   UserID int NOT NULL AUTO_INCREMENT,
   Password varchar(15) NOT NULL,
