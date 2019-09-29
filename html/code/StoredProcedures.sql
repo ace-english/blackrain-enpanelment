@@ -155,7 +155,7 @@ END$$
 
 DELIMITER ;
 
-/*Encounter Searches*/
+/*Encounter Searches that looks for how much a patient has visited each provider*/
 DELIMITER $$
 
 CREATE PROCEDURE EncounterSearch(IN PatientID int)
@@ -164,6 +164,24 @@ BEGIN
     FROM Encounter, Provider
     WHERE Encounter.PatientID = PatientID && Encounter.NPI = Provider.NPI && Encounter.Status != 'D'
     GROUP BY Provider.FName, Provider.LName, Encounter.NPI, Encounter.DOS, Encounter.EncID;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE RequestAccepted(IN NPI varchar(15), IN MRN varchar(75))
+BEGIN
+    UPDATE Request 
+    SET 
+      Request.TerminationDate = GETDATE(),
+      Request.Status = 'D',
+    WHERE Request.MRN = MRN;
+
+    INSERT INTO Empanelment(PcpAssignmentID,NPI,PatientID,FacilityID,ProviderName,PatientName,FacilityName)
+    SELECT PcpAssignment.PcpAssignmentID, Provider.NPI, Facility.FacilityID, CONCATE(Provider.FName,'',Provider.LName), Patient.PatientName, Facility.FacilityName
+    FROM Provider, Patient, PcpAssignment, Facility
+    WHERE Provider.NPI = NPI;
 END$$
 
 DELIMITER ;
@@ -180,6 +198,8 @@ BEGIN
     DROP TABLE IF EXISTS Facility;
     DROP TABLE IF EXISTS Provider;
     DROP TABLE IF EXISTS Patient;
+    DROP TABLE IF EXISTS Panel;
+    DROP TABLE IF EXISTS Request;
 END$$
 
 DELIMITER ;
@@ -195,6 +215,8 @@ BEGIN
     CALL AddEncounterTbl();
     CALL AddPcpAssignmentTbl();
     CALL AddEmpanelmentTbl();
+    CALL CreatePanelTbl();
+    CALL CreateRequestTbl();
 END$$
 
 DELIMITER ;
