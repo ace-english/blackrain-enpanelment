@@ -83,11 +83,11 @@ CREATE TABLE Provider (
   PrCountryCode varchar(75) NULL,
   PrPhone varchar(75) NULL,
   PrFax varchar(75) NULL,
-  EnumDate varchar(75) NULL,
-  UpdateDate varchar(75) NULL,
+  EnumDate date NULL,
+  UpdateDate date NULL,
   DeactCode varchar(75) NULL,
-  DeactDate varchar(75) NULL,
-  ReactDate varchar(75) NULL,
+  DeactDate date NULL,
+  ReactDate date NULL,
   GenCode varchar(75) NULL,
   OffLName varchar(75) NULL,
   OffFName varchar(75) NULL,
@@ -268,7 +268,8 @@ CREATE TABLE Encounter (
   CONSTRAINT FacilityID FOREIGN KEY (FacilityID) REFERENCES Facility (FacilityID),
   CONSTRAINT PatientID FOREIGN KEY (PatientID) REFERENCES Patient (PatientID),
   CONSTRAINT ProviderID FOREIGN KEY (ProviderID) REFERENCES Provider (ProviderID),
-  CONSTRAINT NPI_2 FOREIGN KEY (NPI) REFERENCES Provider (NPI)
+  CONSTRAINT NPI_2 FOREIGN KEY (NPI) REFERENCES Provider (NPI),
+  UNIQUE (EncID)
 ) ENGINE=InnoDB;
 
 END$$
