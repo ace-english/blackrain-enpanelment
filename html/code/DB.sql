@@ -332,8 +332,7 @@ CREATE TABLE Empanelment (
   CONSTRAINT FacilityID_3 FOREIGN KEY (FacilityID) REFERENCES Facility (FacilityID),
   CONSTRAINT PatientID_3 FOREIGN KEY (PatientID) REFERENCES Patient (PatientID),
   CONSTRAINT NPI_4 FOREIGN KEY (NPI) REFERENCES Provider (NPI),
-  CONSTRAINT PcpAssignmentID FOREIGN KEY (PcpAssignmentID) REFERENCES PcpAssignment (PcpAssignmentID),
-  UNIQUE (PatientID)
+  CONSTRAINT PcpAssignmentID FOREIGN KEY (PcpAssignmentID) REFERENCES PcpAssignment (PcpAssignmentID)
 ) ENGINE=InnoDB;
 
 END$$
