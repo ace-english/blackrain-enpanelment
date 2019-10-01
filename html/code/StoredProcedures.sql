@@ -264,6 +264,36 @@ END$$
 
 DELIMITER ;
 
+DELIMITER $$
+
+CREATE PROCEDURE UpdateSize(IN NPI varchar(15), IN Size int)
+BEGIN
+    DECLARE Temp int DEFAULT 0;
+
+    UPDATE Panel
+    SET Panel.Size = Size
+    WHERE Panel.NPI = NPI;
+
+    SELECT COUNT(PatientID)
+    INTO Temp
+    FROM Empanelment
+    WHERE Empanelment.NPI = NPI;
+
+    UPDATE Panel
+    SET Panel.PanelStatus = 'O'
+    WHERE Temp < Panel.Size && Panel.NPI = NPI && Panel.Exception2 = NULL && Panel.Exception3 = NULL && Panel.Exception4 = NULL;
+
+    UPDATE Panel
+    SET Panel.PanelStatus = 'C'
+    WHERE  Temp >= Panel.Size && Panel.Exception1 = 'Takes Families of Patient' && Panel.NPI = NPI;
+
+    UPDATE Panel
+    SET Panel.PanelStatus = 'L'
+    WHERE Temp <= Panel.Size && Panel.Exception2 != NULL && Panel.NPI = NPI;
+
+END$$
+
+DELIMITER ;
 
 /*For after inserting into Encounter,PcpAssignment,or Empanelment Tables*/
 --CALL EncounterFill();
