@@ -42,38 +42,3 @@ ALTER TABLE Panel
 END$$
 
 DELIMITER ;
-
-DELIMITER $$
-
-CREATE PROCEDURE FillPanel(IN NPI varchar(15), IN Exception1 varchar(255), IN Exception2 varchar(255), IN Exception3 varchar(255), IN Exception4 varchar(255))
-BEGIN
-DECLARE Temp int DEFAULT 0;
-
-SELECT COUNT(PatientID)
-INTO Temp
-FROM Empanelment
-WHERE Empanelment.NPI = NPI;
-
-UPDATE Panel
-SET Panel.PanelStatus = 'O'
-WHERE Temp < Panel.Size && Panel.NPI = NPI;
-
-UPDATE Panel
-SET Panel.PanelStatus = 'C'
-WHERE  Temp >= Panel.Size && Panel.Exception1 = 'Takes Families of Patient' && Panel.NPI = NPI;
-
-UPDATE Panel
-SET Panel.PanelStatus = 'L'
-WHERE Temp <= Panel.Size && Panel.Exception2 != NULL && Panel.NPI = NPI;
-
-UPDATE Panel 
-  SET 
-    Panel.exception1 = Exception1,
-    Panel.exception2 = Exception2,
-    Panel.exception3 = Exception3,
-    Panel.exception4 = Exception4
-  WHERE Panel.NPI = NPI;
-
-END$$
-
-DELIMITER ;
