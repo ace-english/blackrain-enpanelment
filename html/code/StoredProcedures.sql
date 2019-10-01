@@ -250,11 +250,20 @@ BEGIN
     CALL AddEncounterTbl();
     CALL AddPcpAssignmentTbl();
     CALL AddEmpanelmentTbl();
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE AddTransTables()
+BEGIN
     CALL CreatePanelTbl();
     CALL CreateRequestTbl();
 END$$
 
 DELIMITER ;
+
 
 /*For after inserting into Encounter,PcpAssignment,or Empanelment Tables*/
 --CALL EncounterFill();
