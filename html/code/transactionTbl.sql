@@ -40,3 +40,5 @@ ALTER TABLE Panel
   ADD COLUMN Exception4 varchar(255) NULL;
 
 END$$
+
+DELIMITER ;
